@@ -21,6 +21,7 @@
 
     </div>
   </router-link>
+  <div>
   <img v-if="recipe.vegan" src="../assets/newvegan.png" width="35" height="35">
       <img v-if="recipe.vegetarian" src="../assets/vegeterian.png" width="25" height="35">
       <img v-if="recipe.glutenFree" src="../assets/gluten-free-icon.png" width="35" height="35">
@@ -28,7 +29,7 @@
         <img v-if="!flag" src="../assets/hearticon.png" width="25" height="25" > 
         <img  v-else src="../assets/favheart.png" width="25" height="25" >
         </b-button>
-
+      </div>
 </div>
 </template>
 
