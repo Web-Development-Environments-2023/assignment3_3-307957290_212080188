@@ -25,7 +25,7 @@
         <b-nav-item-dropdown id="dropdown-1" text="Personal" class="m-md-2">
           <b-dropdown-item><router-link :to="{ name: 'favoritesPage' }">Favorites</router-link></b-dropdown-item>
           <b-dropdown-item><router-link :to="{ name: 'privatePage' }">Private</router-link></b-dropdown-item>
-          <b-dropdown-item><router-link :to="{ name: 'la_FamiliaPage' }">La_Familia</router-link></b-dropdown-item>
+          <b-dropdown-item><router-link :to="{ name: 'la_FamiliaPage' }">Familia</router-link></b-dropdown-item>
         </b-nav-item-dropdown>
        
         <b-nav-item><b-button variant="outline-info" class="mb-2" @click="Logout">
