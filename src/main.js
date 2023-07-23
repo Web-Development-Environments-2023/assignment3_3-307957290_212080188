@@ -9,6 +9,9 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   routes,
 });
+import VueCookies from "vue-cookies";
+Vue.use(VueCookies);
+axios.defaults.withCredentials=true;
 
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";
@@ -67,6 +70,7 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 const shared_data = {
+  server_domain: "http://127.0.0.1:3000",
   username: localStorage.username,
   login(username) {
     localStorage.setItem("username", username);
