@@ -4,19 +4,23 @@
         id="modal-prevent-closing"
         ref="modal"
 > -->
-            <h1 class="title" style="font-style: italic; font-size: xx-large; font-weight: bolder; position: relative; margin-left: 50%; margin-top: 3%; margin-bottom: 2%;">New_Recipe</h1>
-            <b-button v-b-modal.modal-prevent-closing @click="onReset" >Create New Recipe</b-button>
-            <b-modal id="modal-prevent-closing" ref="modal" title="Submit Your Recipe Details" 
-            @show="onReset" @hidden="onReset" @ok="handleOk" style="width: 250px;">
+            <h1 class="title" style="font-style: italic; font-size: xx-large; font-weight: bolder; position: relative; margin-left: 35%; margin-top: 7%; margin-bottom: 4%; color: cadetblue;">New_Recipe</h1>
+            <p style="font-style: italic; font-size: x-large; font-weight: bolder; position: relative; margin-left: 20%; margin-top: 7%; margin-bottom: 4%; color: rgb(72, 95, 95);">Welcome to the Add Recipes page!<br>
+                 We can't wait to see what your culinary masterpiece is.<br>
+                  Share your recipe with the world and let your culinary adventures begin!</p>
+            <b-button v-b-modal.modal-prevent-closing @click="onReset" style="font-style: italic; font-size: x-large; font-weight: bolder; position: relative; margin-left: 30%; margin-bottom: 25%;color: cadetblue; background-color: rgb(134, 221, 224);" >Click for Adding New Recipe</b-button>
+            <b-modal id="modal-prevent-closing" ref="modal" title="Submit Your Recipe Details"  
+            @show="onReset" @hidden="onReset" @ok="handleOk" style="width: 250px; color: darkslategrey;font-style: italic;">
 
             <form @submit.stop.prevent="handleSubmit" @reset.stop.prevent="onReset"  >
                 
                 <b-form-group
                 id="input-group-id"
                 label-cols-sm="3"
-                label="Id:"
+                label="Id:" 
                 label-for="id"
-                style="font-style: italic;"
+                style="font-style: italic; font-size: large; color: cadetblue;"
+                
                 >
                 <b-form-input
                     id="id"
@@ -25,24 +29,20 @@
                     :state="validateState('id')"
                 ></b-form-input>
                 <b-form-invalid-feedback v-if="!$v.form.id.required">
-                    image is required
+                    image is required!
                 </b-form-invalid-feedback>
                 <b-form-invalid-feedback v-if="!$v.form.id.numeric">
-                    id must to be Number
+                    id must be a Number!
                 </b-form-invalid-feedback>
 
                 </b-form-group>
-
-                
-                
-                
                 
                 <b-form-group
                 id="input-group-image"
                 label-cols-sm="3"
                 label="Image:"
                 label-for="image"
-                style="font-style: italic;"
+                style="font-style: italic; font-size: large; color: cadetblue;"
                 >
                 <b-form-input
                 style="width: 300px;"
@@ -51,22 +51,20 @@
                     :state="validateState('image')"
                 ></b-form-input>
                 <b-form-invalid-feedback v-if="!$v.form.image.required">
-                    image is required
+                    image is required!
                 </b-form-invalid-feedback>
                 <b-form-invalid-feedback v-if="!$v.form.image.url">
-                    image must to be url
+                    image must  be url!
                 </b-form-invalid-feedback>
 
                 </b-form-group>
         
-        
-            <!--  -->
                 <b-form-group
                     id="input-group-title"
                     label-cols-sm="3"
                     label="Title:"
                     label-for="title"
-                    style="font-style: italic;"
+                    style="font-style: italic; font-size: large; color: cadetblue;"
                     >
                     <b-form-input
                         id="title"
@@ -76,7 +74,7 @@
                         :state="validateState('title')"
                     ></b-form-input>
                     <b-form-invalid-feedback v-if="!$v.form.title.required">
-                        title is required
+                        title is required!
                 </b-form-invalid-feedback>
 
 
@@ -85,15 +83,12 @@
         
         
         
-            <!--  -->
-        
-                <!--  -->
                 <b-form-group
                     id="input-group-readyInMinutes"
                     label-cols-sm="3"
                     label="ReadyInMinutes:"
                     label-for="readyInMinutes"
-                    style="font-style: italic;"
+                    style="font-style: italic; font-size: large; color: cadetblue;"
                     >
                     <b-form-input
                     style="width: 300px;"
@@ -103,10 +98,10 @@
                         :state="validateState('readyInMinutes')"
                     ></b-form-input>
                     <b-form-invalid-feedback v-if="!$v.form.readyInMinutes.required">
-                        readyInMinutes is required
+                        readyInMinutes is required!
                 </b-form-invalid-feedback>
                 <b-form-invalid-feedback v-if="!$v.form.readyInMinutes.numeric">
-                    readyInMinutes must to be Number
+                    readyInMinutes must be Number!
                 </b-form-invalid-feedback>
 
 
@@ -122,7 +117,7 @@
                 label-cols-sm="3"
                 label="Popularity:"
                 label-for="popularity"
-                style="font-style: italic;"
+                style="font-style: italic; font-size: large; color: cadetblue;"
                 >
                 <b-form-input
                     id="popularity"
@@ -131,10 +126,10 @@
                     :state="validateState('popularity')"
                 ></b-form-input>
                 <b-form-invalid-feedback v-if="!$v.form.popularity.required">
-                    popularity is required
+                    popularity is required!
                 </b-form-invalid-feedback>
                 <b-form-invalid-feedback v-if="!$v.form.popularity.numeric">
-                    popularity must to be Number
+                    popularity must to be Number!
                 </b-form-invalid-feedback>
 
                 </b-form-group>
@@ -145,7 +140,7 @@
                 label-cols-sm="3"
                 label="servings:"
                 label-for="servings"
-                style="font-style: italic;"
+                style="font-style: italic; font-size: large; color: cadetblue;"
                 >
                 <b-form-input
                     id="servings"
@@ -154,10 +149,10 @@
                     :state="validateState('servings')"
                 ></b-form-input>
                 <b-form-invalid-feedback v-if="!$v.form.servings.required">
-                    servings is required
+                    servings is required!
                 </b-form-invalid-feedback>
                 <b-form-invalid-feedback v-if="!$v.form.servings.numeric">
-                    servings must to be Number
+                    servings must to be Number!
                 </b-form-invalid-feedback>
 
                 </b-form-group>
@@ -168,7 +163,7 @@
                 label-cols-sm="3"
                 label="Vegan:"
                 label-for="vegan"
-                style="font-style: italic;"
+                style="font-style: italic; font-size: large; color: cadetblue;"
                 >
                 <b-form-input
                     id="vegan"
@@ -178,7 +173,7 @@
                     :state="validateState('vegan')"
                 ></b-form-input>
                 <b-form-invalid-feedback v-if="!$v.form.vegan.required">
-                    vegan is required
+                    vegan is required!
                 </b-form-invalid-feedback>
                 </b-form-group>
         
@@ -187,7 +182,7 @@
                 label-cols-sm="3"
                 label="GlutenFree:"
                 label-for="glutenFree"
-                style="font-style: italic;"
+                style="font-style: italic; font-size: large; color: cadetblue;"
                 >
                 <b-form-input
                     id="glutenFree"
@@ -197,7 +192,7 @@
                     :state="validateState('glutenFree')"
                 ></b-form-input>
                 <b-form-invalid-feedback v-if="!$v.form.glutenFree.required">
-                    glutenFree is required
+                    glutenFree is required!
                 </b-form-invalid-feedback>
 
                 </b-form-group>
@@ -207,7 +202,7 @@
                     label-cols-sm="3"
                     label="Vegetarian:"
                     label-for="vegetarian"
-                    style="font-style: italic;"
+                    style="font-style: italic; font-size: large; color: cadetblue;"
                     >
                     <b-form-input
                         id="vegetarian"
@@ -217,85 +212,19 @@
                         :state="validateState('vegetarian')"
                     ></b-form-input>
                     <b-form-invalid-feedback v-if="!$v.form.vegetarian.required">
-                        vegetarian is required
+                        vegetarian is required!
                 </b-form-invalid-feedback>
 
                 </b-form-group>
         
-        
-                <!-- <b-form-group
-                    id="input-group-name"
-                    label-cols-sm="3"
-                    label="name:"
-                    label-for="name"
-                    style="font-style: italic;"
-                    >
-                    <b-form-input
-                        id="name"
-                        v-model="$v.form.name.$model"
-                        type="name"
-                        :state="validateState('name')"
-                    ></b-form-input>
-                    <b-form-invalid-feedback v-if="!$v.form.name.required">
-                        name is required
-                </b-form-invalid-feedback>
-
-                </b-form-group>
-                <b-form-group
-                    id="input-group-amount"
-                    label-cols-sm="3"
-                    label="amount:"
-                    label-for="amount"
-                    style="font-style: italic;"
-                    >
-                    <b-form-input
-                        id="amount"
-                        v-model="$v.form.amount.$model"
-                        type="amount"
-                        :state="validateState('amount')"
-                    ></b-form-input>
-                    <b-form-invalid-feedback v-if="!$v.form.amount.required">
-                        amount is required
-                </b-form-invalid-feedback>
-                <b-form-invalid-feedback v-if="!$v.form.amount.numeric">
-                    amount is numeric
-                </b-form-invalid-feedback>
-
-                </b-form-group>
-                <b-form-group
-                    id="input-group-unit"
-                    label-cols-sm="3"
-                    label="unit:"
-                    label-for="unit"
-                    style="font-style: italic;"
-                    >
-                    <b-form-input
-                        id="unit"
-                        v-model="$v.form.unit.$model"
-                        type="unit"
-                        :state="validateState('unit')"
-                    ></b-form-input>
-                    <b-form-invalid-feedback v-if="!$v.form.unit.required">
-                        unit is required
-                </b-form-invalid-feedback>
-
-                </b-form-group> -->
-
-
-
-
-
-
-
-
                 <b-form @submit.prevent="onAddIng" style="margin-left: 0%;">
-                    <h2>Add Ingredients</h2>
+                    <h2 style="font-size: large; color: dimgrey; font-style: italic;">Add Ingredients</h2>
                 <b-form-group
                     id="input-group-name"
                     label-cols-sm="3"
                     label="Name:"
                     label-for="name"
-                    style="font-style: italic;"
+                    style="font-style: italic; font-size: large; color: cadetblue;"
                     >
                     <b-form-input
                         id="name"
@@ -305,7 +234,7 @@
                         :state="validateState('name')"
                     ></b-form-input>
                     <b-form-invalid-feedback v-if="!$v.form.name.required">
-                        name is required
+                        name is required!
                 </b-form-invalid-feedback>
 
                 </b-form-group>
@@ -314,7 +243,7 @@
                     label-cols-sm="3"
                     label="Amount:"
                     label-for="amount"
-                    style="font-style: italic;"
+                    style="font-style: italic; font-size: large; color: cadetblue;"
                     >
                     <b-form-input
                         id="amount"
@@ -324,10 +253,10 @@
                         :state="validateState('amount')"
                     ></b-form-input>
                     <b-form-invalid-feedback v-if="!$v.form.amount.required">
-                        amount is required
+                        amount is required!
                 </b-form-invalid-feedback>
                 <b-form-invalid-feedback v-if="!$v.form.amount.numeric">
-                    amount is numeric
+                    amount is numeric!
                 </b-form-invalid-feedback>
 
                 </b-form-group>
@@ -336,7 +265,7 @@
                     label-cols-sm="3"
                     label="Unit:"
                     label-for="unit"
-                    style="font-style: italic;"
+                    style="font-style: italic; font-size: large; color: cadetblue;"
                     >
                     <b-form-input
                         id="unit"
@@ -346,7 +275,7 @@
                         :state="validateState('unit')"
                     ></b-form-input>
                     <b-form-invalid-feedback v-if="!$v.form.unit.required">
-                        unit is required
+                        unit is required!
                 </b-form-invalid-feedback>
 
                 </b-form-group>
