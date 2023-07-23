@@ -1,19 +1,19 @@
  <template>
     <div class="row ">
       <div class="col-md-6 ">
-        <div class="leftside" style="font-style: italic; font-family: 'Times New Roman', Times, serif; font: bolder; font-size:xx-large; margin-top: 5%; color: #047ca7; margin-left: 2% ; background-color: rgb(248, 229, 242);">
+        <div class="leftside" style="font-style: italic; font-family: 'Times New Roman', Times, serif; font: bolder; font-size:xx-large; margin-top: 5%; color: #047ca7; margin-left: 2% ; background-color: rgb(235, 226, 232);">
           Random Recipes
       <!-- task 1.5 -->
       <!-- <RandomRecipes></RandomRecipes> -->
       <b-col v-for="r in recipes" :key="r.id">
           <RecipePreview class="recipePreview" :recipe="r" />
         </b-col>
-      <button type="submit" @click="updateRecipes">More Recipes</button>
+      <button type="submit" @click="updateRecipes" style="margin-left: 30%; font-size: x-large; font-style: italic;">More Recipes</button>
         </div>
       </div>
     
       <div class="col-md-6 ">
-        <div class="rightside" style="font-style: italic; font-family: 'Times New Roman', Times, serif; font: bolder; font-size:xx-large; margin-top: 5%; color: #047ca7; background-color: rgb(227, 241, 245);">
+        <div class="rightside" style="font-style: italic; font-family: 'Times New Roman', Times, serif; font: bolder; font-size:xx-large; margin-top: 5%; color: #047ca7; background-color: rgb(228, 237, 239);">
           <span v-if="!$root.store.username" >
             SignIn
             <LogInComp ></LogInComp>
