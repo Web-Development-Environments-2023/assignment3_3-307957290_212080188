@@ -1,12 +1,13 @@
 <template>
   <div class="container">
-    <h1 class="title">Login</h1>
+    <h1 class="title" style="font-style: italic; margin-top: 8%; color: darkslategrey;">Login</h1>
     <b-form @submit.prevent="onLogin">
       <b-form-group
         id="input-group-Username"
         label-cols-sm="3"
         label="Username:"
         label-for="Username"
+        style="margin-right: 10%; color: cadetblue;"
       >
         <b-form-input
           id="Username"
@@ -24,6 +25,7 @@
         label-cols-sm="3"
         label="Password:"
         label-for="Password"
+        style="margin-right: 10%; color: cadetblue;"
       >
         <b-form-input
           id="Password"
@@ -41,6 +43,7 @@
         variant="primary"
         style="width:100px;display:block;"
         class="mx-auto w-100"
+        
         >Login</b-button
       >
       <div class="mt-2">
