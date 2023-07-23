@@ -7,7 +7,7 @@
     <div class="recipe-body">
       <!-- <div class="recipe-body"> -->
         <div class="container">
-      <img :src="recipe.image" class="recipe-image"  alt="Avatar" style="max-width: 100%; height: auto; vertical-align: middle; display: inline-block;"/>
+      <img :src="recipe.image" class="recipe-image"  alt="Avatar" style="max-width: 100%; height: 190px;width: 400px;; vertical-align: middle; display: inline-block;"/>
     </div>
   </div>
     <div class="recipe-footer">
