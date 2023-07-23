@@ -7,6 +7,7 @@
           label-cols-sm="3"
           label="Username:"
           label-for="Username"
+          style="margin-right: 10%; color: cadetblue;"
         >
           <b-form-input
             id="Username"
@@ -24,6 +25,7 @@
           label-cols-sm="3"
           label="Password:"
           label-for="Password"
+          style="margin-right: 10%; color: cadetblue;"
         >
           <b-form-input
             id="Password"
