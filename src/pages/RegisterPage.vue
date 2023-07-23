@@ -25,6 +25,59 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
+
+   <!--  -->
+      <b-form-group
+            id="input-group-firstName"
+            label-cols-sm="3"
+            label="FirstName:"
+            label-for="firstName"
+          >
+            <b-form-input
+              id="firstName"
+              v-model="$v.form.firstName.$model"
+              type="text"
+              :state="validateState('firstName')"
+            ></b-form-input>
+            <b-form-invalid-feedback v-if="!$v.form.firstName.required">
+              Firstname is required
+            </b-form-invalid-feedback>
+            <b-form-invalid-feedback v-if="!$v.form.firstName.alpha">
+              FirstName alpha
+        </b-form-invalid-feedback>
+
+      </b-form-group>
+
+
+
+   <!--  -->
+
+      <!--  -->
+      <b-form-group
+            id="input-group-lastName"
+            label-cols-sm="3"
+            label="LastName:"
+            label-for="lastName"
+          >
+            <b-form-input
+              id="lastName"
+              v-model="$v.form.lastName.$model"
+              type="text"
+              :state="validateState('lastName')"
+            ></b-form-input>
+            <b-form-invalid-feedback v-if="!$v.form.lastName.required">
+              LastName is required
+            </b-form-invalid-feedback>
+            <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
+              LastName alpha
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+
+
+   <!--  -->
+
+
       <b-form-group
         id="input-group-country"
         label-cols-sm="3"
@@ -62,10 +115,18 @@
           For that, your password should be also:
         </b-form-text>
         <b-form-invalid-feedback
-          v-if="$v.form.password.required && !$v.form.password.length"
-        >
+          v-if="$v.form.password.required && !$v.form.password.length">
           Have length between 5-10 characters long
         </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-if="$v.form.password.required && $v.form.password.length && (!$v.form.password.validSpecialChar)">
+          Password must contain at least one Special Char!
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-if="$v.form.password.required && $v.form.password.length && $v.form.password.validSpecialChar && (!$v.form.password.validNum)">
+          Password must contain at least one number!
+        </b-form-invalid-feedback>
+
       </b-form-group>
 
       <b-form-group
@@ -89,6 +150,32 @@
           The confirmed password is not equal to the original password
         </b-form-invalid-feedback>
       </b-form-group>
+      <!--  -->
+      <b-form-group
+            id="input-group-email"
+            label-cols-sm="3"
+            label="Email:"
+            label-for="email"
+          >
+            <b-form-input
+              id="email"
+              v-model="$v.form.email.$model"
+              type="email"
+              :state="validateState('email')"
+            ></b-form-input>
+            <b-form-invalid-feedback v-if="!$v.form.email.required">
+              Email is required
+            </b-form-invalid-feedback>
+            <b-form-invalid-feedback
+          v-else-if="!$v.form.email.email"
+        >
+        Input correct Email
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+
+
+   <!--  -->
 
       <b-button type="reset" variant="danger">Reset</b-button>
       <b-button
@@ -127,7 +214,8 @@ import {
   maxLength,
   alpha,
   sameAs,
-  email
+  email,
+  Number
 } from "vuelidate/lib/validators";
 
 export default {
@@ -156,16 +244,39 @@ export default {
         length: (u) => minLength(3)(u) && maxLength(8)(u),
         alpha
       },
+      firstName: {
+        required,
+        alpha
+      },
+      lastName: {
+        required,
+        alpha
+      },
       country: {
         required
       },
       password: {
         required,
-        length: (p) => minLength(5)(p) && maxLength(10)(p)
+        length: (p) => minLength(5)(p) && maxLength(10)(p),
+        // checkspechialchar
+        validNum: function(value) {
+        const containsNumber = /[0-9]/.test(value)
+        return containsNumber 
+    },
+    validSpecialChar: function(value) {
+        const containsSpecial = /[#?!@$%^&*-]/.test(value)
+        return  containsSpecial
+    },
+        
+        
       },
       confirmedPassword: {
         required,
         sameAsPassword: sameAs("password")
+      },
+      email: {
+        required,
+        email
       }
     }
   },
@@ -187,7 +298,11 @@ export default {
 
           {
             username: this.form.username,
-            password: this.form.password
+            password: this.form.password,
+            firstName: this.form.firstName,
+            lastName: this.form.lastName,
+            country: this.form.country,
+            email: this.form.email
           }
         );
         this.$router.push("/login");
@@ -220,6 +335,7 @@ export default {
         this.$v.$reset();
       });
     }
+
   }
 };
 </script>
