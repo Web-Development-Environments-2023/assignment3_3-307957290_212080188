@@ -21,7 +21,11 @@
           <span v-else>
             Last Viewed Recipes
       <!-- task 1.5 -->
-      <RecipePreviewList></RecipePreviewList>
+      <b-col v-for="k in Lastrecipes" :key="k.id">
+          <RecipePreview class="recipePreview" :recipe="k" />
+        </b-col>
+
+      <!-- <RecipePreviewList></RecipePreviewList> -->
           </span>
       <!-- task 1.5 -->
       
@@ -38,7 +42,7 @@
     
     <script>
     //task 1.5
-    import RecipePreviewList from "../components/RecipePreviewList.vue";
+    // import RecipePreviewList from "../components/RecipePreviewList.vue";
     import LogInComp from "../components/LogInComp.vue";
     // import RandomRecipes from "../components/RandomRecipes.vue";
     import RecipePreview from "../components/RecipePreview.vue";
@@ -54,12 +58,13 @@
         submitError: undefined
       },
       recipes: [],
+      Lastrecipes: [],
     };
   },
     //task1
       //task 1.5
       components: {
-    RecipePreviewList,
+    // RecipePreviewList,
     LogInComp,
     // RandomRecipes,
     RecipePreview
@@ -67,6 +72,7 @@
       //task 4
       mounted() {
       this.updateRecipes();
+      this.updateLastRecipes();
       },
     methods: {
       async updateRecipes() {
@@ -82,7 +88,23 @@
         } catch (error) {
           console.log(error);
         }
+      },
+
+      async updateLastRecipes() {
+        try {
+          // console.log(this.$root.store.server_domain+"/users/recipe"1);
+          const response = await this.axios.get(
+            this.$root.store.server_domain +"/users/recipe");
+          // console.log(response);
+          const lastrecipes = response.data;
+          this.Lastrecipes = [];
+          this.Lastrecipes.push(...lastrecipes);
+          // console.log(this.recipes);
+        } catch (error) {
+          console.log(error);
+        }
       }
+
     }
       
     
