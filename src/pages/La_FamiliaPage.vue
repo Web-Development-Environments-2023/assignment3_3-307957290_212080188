@@ -1,0 +1,60 @@
+<template>
+    <b-container>
+      <h3>
+        {{ title }}:
+        <slot></slot>
+      </h3>
+      <b-row>
+        <b-col v-for="r in recipes" :key="r.id">
+          <RecipePreview class="recipeViewPage" :recipe="r" />
+        </b-col>
+      </b-row>
+    </b-container>
+  </template>
+  
+  <script>
+  import RecipePreview from "../components/RecipePreview.vue";
+  export default {
+    name: "La_FamiliaPage",
+    components: {
+        RecipePreview
+    },
+    props: {
+      title: {
+        type: String,
+        required: true
+      }
+    },
+    data() {
+      return {
+        recipes: []
+      };
+    },
+    mounted() {
+      this.updateRecipes();
+    },
+    methods: {
+      async updateRecipes() {
+        try {
+          // console.log(this.$root.store.server_domain+"/users/recipe"1);
+          const response = await this.axios.get(
+            this.$root.store.server_domain +"/users/family");
+          // console.log(response);
+          const recipes = response.data;
+          this.recipes = [];
+          this.recipes.push(...recipes);
+          // console.log(this.recipes);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
+  };
+  </script>
+  
+  <style lang="scss" scoped>
+  .container {
+    min-height: 400px;
+  }
+  </style>
+  
