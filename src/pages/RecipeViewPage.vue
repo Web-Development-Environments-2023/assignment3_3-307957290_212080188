@@ -2,34 +2,37 @@
   <div class="container">
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
-        <h1>{{ recipe.title }}</h1>
-        <img :src="recipe.image" class="center" style="width: 10%;" />
+        <h1 style="font-style: italic; font-size: xx-large;position: relative; margin-left: 20%;color: rgb(129, 145, 167);">{{ recipe.title }}</h1>
+        <img :src="recipe.image" class="center" style="width: 40%;height: 40%;" />
       </div>
       <div class="recipe-body">
         <div class="wrapper">
           <div class="wrapped">
             <div class="mb-3">
-              <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
-              <div>Likes: {{ recipe.popularity }} likes</div>
-              <div><img v-if="vegen" src="../assets/newvegan.png" width="35" height="35"></div>
-              <div><img v-if="vegeterian" src="../assets/vegeterian.png" width="25" height="35"></div>
-              <div><img v-if="glutenFree" src="../assets/gluten-free-icon.png" width="35" height="35"></div>
+              <div><img v-if="vegen" src="../assets/newvegan.png" width="55" height="55">
+              <img v-if="vegeterian" src="../assets/vegeterian.png" width="55" height="55">
+              <img v-if="glutenFree" src="../assets/gluten-free-icon.png" width="55" height="55">
 
               <b-button variant="outline-info" @click="AddFavorite" class="mb-2"   width="15" height="15">
                  <img v-if="!flag" src="../assets/hearticon.png" width="25" height="25" > 
                  <img  v-else src="../assets/favheart.png" width="25" height="25" >
               </b-button>
-
             </div>
+            <br>
+              <div style="font-style: italic; font-size: larger;">Ready in {{ recipe.readyInMinutes }} minutes.</div>
+              <div style="font-style: italic; font-size: larger;">Likes: {{ recipe.popularity }} likes</div>
+              
+            </div>
+            <br>
             Ingredients:
-            <ul>
+            <ul style="font-style: italic; font-size: medium;">
               <!-- <li
                 v-for="(r, index) in recipe.ingredients"
                 :key="index + '_' + r.name"
               > </li>  -->
              <!-- <li v-for="s in recipe.ingredients" :key="s.name">{{ s.amount }}, {{ s.unit }}, {{ s.name }}</li>  -->
              <li v-for="s in recipe.ingredients" :key="s.name">
-              {{ s.amount }} {{ s.unit }} of {{ s.name }}
+              {{ s.amount }} {{ s.unit }} of {{ s.name }}.
               </li>
              
             </ul>
@@ -37,8 +40,8 @@
           <div class="wrapped">
             Instructions:
             <ol>
-              <li v-for="s in recipe.directions" :key="s.stepNumber">
-                {{ s.instruction }}
+              <li v-for="s in recipe.directions" :key="s.stepNumber" style="font-style: italic; font-size: medium;">
+                {{ s.instruction }}.
               </li>
             </ol>
           </div>
@@ -139,6 +142,7 @@ export default {
         // _instructions,
         // analyzedInstructions,
         // extendedIngredients,
+        
         ingredients,
         popularity,
         readyInMinutes,
