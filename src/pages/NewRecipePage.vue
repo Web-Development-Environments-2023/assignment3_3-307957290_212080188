@@ -347,13 +347,15 @@ import { BButton, BModal, VBModal } from "bootstrap-vue";
             name:"",
             amount:null,
             unit:"",
-            submitError: undefined
+            // submitError: undefined
         },
         errors: [],
         validated: false,
         ingredients:[],
         directions: [],
-        status: 'not_accepted'
+        // status: 'not_accepted',
+        submitError: undefined
+
 
         
       };
@@ -488,6 +490,9 @@ import { BButton, BModal, VBModal } from "bootstrap-vue";
             servings:null
             
         };
+        this.$nextTick(() => {
+        this.$v.$reset();
+      });
         this.ingredients = [];
         this.directions = [];
         this.errors=[];
